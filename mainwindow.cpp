@@ -969,6 +969,8 @@ void MainWindow::processData()
     // QByteArray data = temp.toLatin1();
     // :Debugging
 
+    data += '\n';
+
     if (m_logFile.isOpen()) {
         m_logFile.write(data);
     }

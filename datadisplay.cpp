@@ -205,6 +205,8 @@ void DataDisplay::displayData(const QByteArray &data)
         m_bufferingIncomingDataTimer.start(70);
 }
 
+#include <iostream>
+
 /*!
  * \brief OutputTerminal::constructDisplayLine
  * \param inData
@@ -215,6 +217,7 @@ void DataDisplay::constructDisplayLine(const QByteArray &inData)
 
     if (m_previous_ended_with_nl) {
         m_timestamps->append(m_timestamp);
+	std::cout << m_timestamp.toString("HH:mm:ss:zzz").toUtf8().constData() << ", ";
     }
 
     for (int i = 0; i < inData.size(); i++) {
@@ -296,6 +299,7 @@ void DataDisplay::constructDisplayLine(const QByteArray &inData)
     }
     if (!line.data.isEmpty()) {
         m_data.append(line);
+	std::cout << line.data.toUtf8().constData();
         m_previous_ended_with_nl = line.data.endsWith('\n');
     }
 }
